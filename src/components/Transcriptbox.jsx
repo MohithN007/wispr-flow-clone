@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { copyToClipboard } from "../services/copyToClipboard";
 
-export default function TranscriptBox({ text }) {
+export default function Transcriptbox({ text }) {
   const [copied, setCopied] = useState(false);
 
   const handleCopy = async () => {

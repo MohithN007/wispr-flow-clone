@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Recorder from "./components/Recorder";
-import TranscriptBox from "./components/TranscriptBox";
+import Transcriptbox from "./components/Transcriptbox";
 
 function App() {
   const [text, setText] = useState("");
@@ -39,7 +39,7 @@ function App() {
       {/* APP CARD */}
       <div className="w-full max-w-xl bg-white rounded-2xl shadow-md p-8">
         <Recorder onText={(t) => setText((p) => p + " " + t)} />
-        <TranscriptBox text={text} />
+        <Transcriptbox text={text} />
       </div>
 
     </div>
