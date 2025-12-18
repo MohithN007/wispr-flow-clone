@@ -73,6 +73,66 @@ For desktop builds (Tauri):
   - Install **Desktop development with C++**
 
 ---
+Setup Instructions
+
+Follow these steps to get the Wispr Flow Clone running on your machine.
+
+1️⃣ Clone the Repository
+
+Open your terminal and run:
+
+git clone https://github.com/your-username/wispr-flow-clone.git
+cd wispr-flow-clone
+
+2️⃣ Install Dependencies
+
+Make sure you have Node.js (v18+) and npm installed.
+
+npm install
+
+
+This will install all frontend dependencies (React, Tailwind, Vite, etc.).
+
+3️⃣ Environment Variables
+
+Create a .env file in the project root with your Deepgram API Key:
+
+VITE_DEEPGRAM_API_KEY=your_deepgram_api_key_here
+
+
+4️⃣ Running the Project (Web Version)
+
+Start the development server:
+
+npm run dev
+
+
+Open your browser at:
+
+http://localhost:5173
+
+
+You should see the Wispr Flow Clone interface.
+Test the push-to-talk, transcription, copy, and clear buttons.
+
+5️⃣ Running as a Desktop App (Tauri)
+Prerequisites:
+
+Rust (install via https://www.rust-lang.org/tools/install
+)
+
+Visual Studio Build Tools (Windows only, include Desktop development with C++)
+
+Steps:
+npm install -D @tauri-apps/cli
+npm run tauri dev
+
+
+This opens the app in a native desktop window.
+Microphone permissions may prompt depending on your OS.
+
+6️⃣ Building for Production (Desktop)
+npm run tauri build
 
 ## 🔑 Environment Setup
 
