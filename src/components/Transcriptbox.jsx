@@ -1,8 +1,16 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { copyToClipboard } from "../services/copyToClipboard";
 
-export default function Transcriptbox({ text }) {
+export default function Transcriptbox({ text, onClear }) {
   const [copied, setCopied] = useState(false);
+  const textareaRef = useRef(null);
+
+  // Auto-scroll to bottom whenever text changes
+  useEffect(() => {
+    if (textareaRef.current) {
+      textareaRef.current.scrollTop = textareaRef.current.scrollHeight;
+    }
+  }, [text]);
 
   const handleCopy = async () => {
     const success = await copyToClipboard(text);
@@ -19,25 +27,37 @@ export default function Transcriptbox({ text }) {
           Transcription
         </span>
 
-        {text && (
-          <button
-            onClick={handleCopy}
-            className={`
-              text-xs px-3 py-1 rounded-full border
-              transition-all duration-200
-              ${
-                copied
-                  ? "bg-green-50 border-green-400 text-green-600"
-                  : "border-gray-300 text-gray-600 hover:bg-gray-100"
-              }
-            `}
-          >
-            {copied ? "Copied ✓" : "Copy"}
-          </button>
-        )}
+        <div className="flex gap-2">
+          {text && (
+            <button
+              onClick={handleCopy}
+              className={`
+                text-xs px-3 py-1 rounded-full border
+                transition-all duration-200
+                ${
+                  copied
+                    ? "bg-green-50 border-green-400 text-green-600"
+                    : "border-gray-300 text-gray-600 hover:bg-gray-100"
+                }
+              `}
+            >
+              {copied ? "Copied ✓" : "Copy"}
+            </button>
+          )}
+
+          {text && onClear && (
+            <button
+              onClick={onClear}
+              className="text-xs px-3 py-1 rounded-full border border-gray-300 text-gray-600 hover:bg-gray-100 transition"
+            >
+              Clear
+            </button>
+          )}
+        </div>
       </div>
 
       <textarea
+        ref={textareaRef}
         value={text}
         readOnly
         placeholder="Your speech will appear here…"
