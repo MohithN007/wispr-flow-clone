@@ -17,7 +17,7 @@ export async function startRecording(onData) {
       }
     };
 
-    mediaRecorder.start(250); // send audio chunks every 250ms
+    mediaRecorder.start(250); 
   } catch (err) {
     throw new Error("Microphone permission denied");
   }
