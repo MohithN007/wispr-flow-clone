@@ -1,16 +1,82 @@
-# React + Vite
+# Wispr Flow Clone 🎙️
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A cross-platform voice-to-text application inspired by **Wispr Flow**, built using **Tauri**, **React**, and **Deepgram**.  
+This project focuses on the core voice transcription workflow: push-to-talk recording, real-time speech recognition, and clean text output.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Features
 
-## React Compiler
+- 🎤 **Push-to-Talk Voice Input**
+- 🎧 **Microphone Access & Audio Capture**
+- ⚡ **Real-Time Speech-to-Text (Deepgram)**
+- 📝 **Sentence-based Transcription (New Line per Sentence)**
+- 📋 **One-Click Copy to Clipboard**
+- 🖥️ **Cross-Platform Desktop Support (Tauri)**
+- 🌐 **Web Deployment via Vercel**
+- ❌ Graceful error handling for permissions and network failures
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## 🛠️ Tech Stack
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### Frontend
+- **React** (Vite)
+- **JavaScript**
+- **Tailwind CSS** (UI styling)
+
+### Desktop
+- **Tauri** (Rust-powered desktop shell)
+
+### Speech Recognition
+- **Deepgram Streaming API (WebSocket)**
+
+### Tooling
+- **Vite**
+- **Git & GitHub**
+- **Vercel** (Web deployment)
+
+---
+
+## 🧠 Architecture Overview
+
+src/
+├── components/
+│ ├── Recorder.jsx # Handles recording state & UI
+│ └── TranscriptBox.jsx # Displays transcription + copy feature
+├── services/
+│ ├── audio.js # Microphone capture & MediaRecorder
+│ └── deepgram.js # WebSocket integration with Deepgram
+├── utils/
+│ └── copyToClipboard.js # Clipboard utility
+├── App.jsx
+└── main.jsx
+
+Each layer has a single responsibility:
+- UI → User interaction
+- Audio → Microphone capture
+- Deepgram → Transcription streaming
+
+---
+
+## 🧩 Prerequisites
+
+Make sure you have the following installed:
+
+- **Node.js** (v18+ recommended)
+- **npm**
+- **Git**
+
+For desktop builds (Tauri):
+- **Rust**
+- **Visual Studio Build Tools (Windows)**
+  - Install **Desktop development with C++**
+
+---
+
+## 🔑 Environment Setup
+
+Create a `.env` file in the project root:
+
+```env
+VITE_DEEPGRAM_API_KEY=your_deepgram_api_key
