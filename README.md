@@ -134,9 +134,13 @@ Microphone permissions may prompt depending on your OS.
 6️⃣ Building for Production (Desktop)
 npm run tauri build
 
-## 🔑 Environment Setup
 
-Create a `.env` file in the project root:
+Limitations
 
-```env
-VITE_DEEPGRAM_API_KEY=your_deepgram_api_key
+Limited Language Support – Currently, only English transcription is fully supported. Multi-language support requires extra Deepgram configuration.
+
+No Advanced Text Editing – Transcribed text cannot be edited directly within the app; users must copy it to an external editor.
+
+No Auto-Save or History – Transcriptions are stored only in memory. Refreshing the web page or closing the desktop app clears all previous transcripts.
+
+File Export Missing – Transcriptions cannot currently be exported as files (e.g., TXT or PDF) directly from the app.
