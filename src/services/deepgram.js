@@ -20,7 +20,6 @@ export function createDeepgramSocket(onText, onError, onOpen) {
 
     if (!transcript) return;
 
-    // ✅ Only commit full sentences
     if (data.is_final) {
       onText(transcript.trim() + "\n");
     }
